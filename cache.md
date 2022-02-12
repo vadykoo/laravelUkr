@@ -1,25 +1,44 @@
 # Кеш
 
--   [Конфігурація](#configuration)
-    -   [Передумови драйвера](#driver-prerequisites)
--   [Використання кешу](#cache-usage)
-    -   [Отримання екземпляра кешу](#obtaining-a-cache-instance)
-    -   [Отримання елементів із кешу](#retrieving-items-from-the-cache)
-    -   [Зберігання предметів у кеші](#storing-items-in-the-cache)
-    -   [Видалення елементів із кешу](#removing-items-from-the-cache)
-    -   [Помічник кешу](#the-cache-helper)
--   [Теги кешу](#cache-tags)
-    -   [Зберігання позначених елементів кешу](#storing-tagged-cache-items)
-    -   [Доступ до позначених елементів кешу](#accessing-tagged-cache-items)
-    -   [Видалення позначених елементів кешу](#removing-tagged-cache-items)
--   [Атомні замки](#atomic-locks)
-    -   [Передумови драйвера](#lock-driver-prerequisites)
-    -   [Управління замками](#managing-locks)
-    -   [Управління замками в різних процесах](#managing-locks-across-processes)
--   [Додавання власних драйверів кешу](#adding-custom-cache-drivers)
-    -   [Написання драйвера](#writing-the-driver)
-    -   [Реєстрація драйвера](#registering-the-driver)
--   [Події](#events)
+[comment]: <> (-   [Конфігурація]&#40;#configuration&#41;)
+
+[comment]: <> (    -   [Передумови&#40;Prerequisites&#41; драйвера]&#40;#driver-prerequisites&#41;)
+
+[comment]: <> (-   [Використання кешу]&#40;#cache-usage&#41;)
+
+[comment]: <> (    -   [Отримання екземпляра кешу]&#40;#obtaining-a-cache-instance&#41;)
+
+[comment]: <> (    -   [Отримання елементів із кешу]&#40;#retrieving-items-from-the-cache&#41;)
+
+[comment]: <> (    -   [Зберігання Objects у кеші]&#40;#storing-items-in-the-cache&#41;)
+
+[comment]: <> (    -   [Видалення елементів із кешу]&#40;#removing-items-from-the-cache&#41;)
+
+[comment]: <> (    -   [Помічник кешу]&#40;#the-cache-helper&#41;)
+
+[comment]: <> (-   [Теги кешу]&#40;#cache-tags&#41;)
+
+[comment]: <> (    -   [Зберігання Tagged елементів кешу]&#40;#storing-tagged-cache-items&#41;)
+
+[comment]: <> (    -   [Доступ до Tagged елементів кешу]&#40;#accessing-tagged-cache-items&#41;)
+
+[comment]: <> (    -   [Видалення Tagged елементів кешу]&#40;#removing-tagged-cache-items&#41;)
+
+[comment]: <> (-   [Atomic замки]&#40;#atomic-locks&#41;)
+
+[comment]: <> (    -   [Передумови драйвера]&#40;#lock-driver-prerequisites&#41;)
+
+[comment]: <> (    -   [Управління Locks]&#40;#managing-locks&#41;)
+
+[comment]: <> (    -   [Управління Locks в різних процесах]&#40;#managing-locks-across-processes&#41;)
+
+[comment]: <> (-   [Додавання власних драйверів кешу]&#40;#adding-custom-cache-drivers&#41;)
+
+[comment]: <> (    -   [Написання драйвера]&#40;#writing-the-driver&#41;)
+
+[comment]: <> (    -   [Реєстрація драйвера]&#40;#registering-the-driver&#41;)
+
+[comment]: <> (-   [Події]&#40;#events&#41;)
 
 <a name="configuration"></a>
 
@@ -89,7 +108,7 @@ Using the Memcached driver requires the [Пакет Memcached PECL](https://pecl
 
 `Illuminate\Contracts\Cache\Factory`і`Illuminate\Contracts\Cache\Repository`[контракти](/docs/{{version}}/contracts)надати доступ до кеш-послуг Laravel.`Factory`Договір надає доступ до всіх драйверів кешу, визначених для вашої програми.`Repository`Контракт, як правило, є реалізацією драйвера кешування за замовчуванням для Вашої програми, як вказано Вашим`cache`файл конфігурації.
 
-Однак ви також можете використовувати`Cache`фасад, що і будемо використовувати в цій документації.`Cache`фасад забезпечує зручний, стислий доступ до основних реалізацій контрактів кешування Laravel:
+Однак ви також можете використовувати`Cache`фасад, що і будемо використовувати в цій документації.`Cache`Facadeзабезпечує зручний, стислий доступ до основних реалізацій контрактів кешування Laravel:
 
     <?php
 
@@ -126,7 +145,7 @@ Using the Memcached driver requires the [Пакет Memcached PECL](https://pecl
 
 ### Отримання елементів із кешу
 
-`get` method on the `Cache`фасад використовується для отримання елементів з кешу. Якщо елемент не існує в кеші,`null`буде повернено. Якщо ви хочете, ви можете передати другий аргумент`get`метод, що визначає значення за замовчуванням, яке потрібно повернути, якщо елемент не існує:
+`get` method on the `Cache`Facadeвикористовується для отримання елементів з кешу. Якщо елемент не існує в кеші,`null`буде повернено. Якщо ви хочете, ви можете передати другий аргумент`get`метод, що визначає значення за замовчуванням, яке потрібно повернути, якщо елемент не існує:
 
     $value = Cache::get('key');
 
@@ -187,9 +206,9 @@ Using the Memcached driver requires the [Пакет Memcached PECL](https://pecl
 
 <a name="storing-items-in-the-cache"></a>
 
-### Зберігання предметів у кеші
+### Зберігання Objects у кеші
 
-Ви можете використовувати`put`метод на`Cache`фасад для зберігання предметів у кеші:
+Ви можете використовувати`put`метод на`Cache`Facadeдля зберігання Objects у кеші:
 
     Cache::put('key', 'value', $seconds);
 
@@ -211,7 +230,7 @@ Using the Memcached driver requires the [Пакет Memcached PECL](https://pecl
 
 <a name="storing-items-forever"></a>
 
-#### Зберігання предметів назавжди
+#### Зберігання Objects назавжди
 
 `forever`метод може використовуватися для постійного зберігання елемента в кеші. Оскільки ці елементи не закінчуються, їх потрібно вручну видалити з кешу за допомогою`forget`метод:
 
@@ -243,7 +262,7 @@ Using the Memcached driver requires the [Пакет Memcached PECL](https://pecl
 
 ### Помічник кешу
 
-На додаток до використання`Cache`фасад або[договір кешування](/docs/{{version}}/contracts), Ви також можете використовувати глобальний`cache`функція для отримання та збереження даних через кеш. Коли`cache`Функція викликається одним аргументом рядка, вона поверне значення даного ключа:
+На додаток до використання`Cache`Facadeабо[договір кешування](/docs/{{version}}/contracts), Ви також можете використовувати глобальний`cache`функція для отримання та збереження даних через кеш. Коли`cache`Функція викликається одним аргументом рядка, вона поверне значення даного ключа:
 
     $value = cache('key');
 
@@ -269,7 +288,7 @@ Using the Memcached driver requires the [Пакет Memcached PECL](https://pecl
 
 <a name="storing-tagged-cache-items"></a>
 
-### Зберігання позначених елементів кешу
+### Зберігання Tagged елементів кешу
 
 Теги кеш-пам’яті дозволяють позначати пов’язані елементи в кеші, а потім очищати всі кешовані значення, яким було призначено даний тег. Ви можете отримати доступ до позначеного кешу, передавши впорядкований масив імен тегів. Наприклад, давайте отримаємо доступ до позначеного кешу та`put`значення в кеші:
 
@@ -279,7 +298,7 @@ Using the Memcached driver requires the [Пакет Memcached PECL](https://pecl
 
 <a name="accessing-tagged-cache-items"></a>
 
-### Доступ до позначених елементів кешу
+### Доступ до Tagged елементів кешу
 
 Щоб отримати позначений елемент кешу, передайте той самий упорядкований список тегів до`tags`а потім викличте`get`метод із ключем, який ви хочете отримати:
 
@@ -289,7 +308,7 @@ Using the Memcached driver requires the [Пакет Memcached PECL](https://pecl
 
 <a name="removing-tagged-cache-items"></a>
 
-### Видалення позначених елементів кешу
+### Видалення Tagged елементів кешу
 
 Ви можете очистити всі елементи, яким призначено тег або список тегів. Наприклад, це твердження видалить усі кеші, позначені будь-яким`people`,`authors`, або обидва. Отже, обидва`Anne`і`John`буде видалено з кешу:
 
@@ -301,7 +320,7 @@ Using the Memcached driver requires the [Пакет Memcached PECL](https://pecl
 
 <a name="atomic-locks"></a>
 
-## Атомні замки
+## Atomic замки
 
 > {note} Щоб використовувати цю функцію, ваша програма повинна використовувати`memcached`,`redis`,`dynamodb`,`database`,`file`, або`array`кеш-драйвер як драйвер кешу вашого додатка за замовчуванням. Крім того, усі сервери повинні взаємодіяти з одним і тим же сервером центрального кешу.
 
@@ -323,9 +342,9 @@ Using the Memcached driver requires the [Пакет Memcached PECL](https://pecl
 
 <a name="managing-locks"></a>
 
-### Управління замками
+### Управління Locks
 
-Атомні замки дозволяють маніпулювати розподіленими замками, не турбуючись про умови перегонів. Наприклад,[Кузня Laravel](https://forge.laravel.com)використовує атомні блокування, щоб гарантувати, що на сервері одночасно виконується лише одне віддалене завдання. Ви можете створювати та керувати замками за допомогою`Cache::lock`метод:
+Atomic замки дозволяють маніпулювати розподіленими Locks, не турбуючись про умови перегонів. Наприклад,[Кузня Laravel](https://forge.laravel.com)використовує Atomic блокування, щоб гарантувати, що на сервері одночасно виконується лише одне віддалене завдання. Ви можете створювати та керувати Locks за допомогою`Cache::lock`метод:
 
     use Illuminate\Support\Facades\Cache;
 
@@ -337,13 +356,13 @@ Using the Memcached driver requires the [Пакет Memcached PECL](https://pecl
         $lock->release();
     }
 
-`get`метод також приймає Закриття. Після виконання Закриття Laravel автоматично відпустить замок:
+`get`метод також приймає Закриття. Після виконання Закриття Laravel автоматично відпустить Lock:
 
     Cache::lock('foo')->get(function () {
         // Lock acquired indefinitely and automatically released...
     });
 
-Якщо замок недоступний на момент запиту, ви можете доручити Laravel почекати вказану кількість секунд. Якщо замок не вдається отримати протягом зазначеного терміну, a`Illuminate\Contracts\Cache\LockTimeoutException`буде кинуто:
+Якщо Lock недоступний на момент запиту, ви можете доручити Laravel почекати вказану кількість секунд. Якщо Lock не вдається отримати протягом зазначеного терміну, a`Illuminate\Contracts\Cache\LockTimeoutException`буде кинуто:
 
     use Illuminate\Contracts\Cache\LockTimeoutException;
 
@@ -365,9 +384,9 @@ Using the Memcached driver requires the [Пакет Memcached PECL](https://pecl
 
 <a name="managing-locks-across-processes"></a>
 
-### Управління замками в різних процесах
+### Управління Locks в різних процесах
 
-Іноді, можливо, ви захочете отримати замок в одному процесі та звільнити його в іншому процесі. Наприклад, ви можете отримати блокування під час веб-запиту і захочете звільнити блокування в кінці завдання, яке знаходиться в черзі, яке ініціюється цим запитом. У цьому сценарії ви повинні передати охоплюваний замок "токен власника" до завдання в черзі, щоб завдання могло повторно створити блокування за допомогою даного маркера:
+Іноді, можливо, ви захочете отримати Lock в одному процесі та звільнити його в іншому процесі. Наприклад, ви можете отримати блокування під час веб-запиту і захочете звільнити блокування в кінці завдання, яке знаходиться в черзі, яке ініціюється цим запитом. У цьому сценарії ви повинні передати охоплюваний Lock "токен власника" до завдання в черзі, щоб завдання могло повторно створити блокування за допомогою даного маркера:
 
     // Within Controller...
     $podcast = Podcast::find($id);
@@ -381,7 +400,7 @@ Using the Memcached driver requires the [Пакет Memcached PECL](https://pecl
     // Within ProcessPodcast Job...
     Cache::restoreLock('foo', $this->owner)->release();
 
-Якщо ви хочете звільнити замок, не поважаючи його поточного власника, ви можете використовувати`forceRelease`метод:
+Якщо ви хочете звільнити Lock, не поважаючи його поточного власника, ви можете використовувати`forceRelease`метод:
 
     Cache::lock('foo')->forceRelease();
 
@@ -470,7 +489,7 @@ Using the Memcached driver requires the [Пакет Memcached PECL](https://pecl
 
 ## Події
 
-Щоб виконати код на кожній операції кешування, ви можете прослухати[події](/docs/{{version}}/events)спрацьовує кеш. Як правило, ви повинні розміщувати ці слухачі подій у вашому`EventServiceProvider`:
+Щоб виконати код на кожній операції кешування, ви можете прослухати[події](/docs/{{version}}/events)спрацьовує кеш. Як правило, ви повинні розміщувати ці Listeners подій у вашому`EventServiceProvider`:
 
     /**
      * The event listener mappings for the application.

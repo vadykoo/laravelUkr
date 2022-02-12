@@ -1,18 +1,28 @@
 git 11a0798a095fefdd3c1e9627c4a209ab069285c5
 
 ---
-# Керівництво по внеску
 
--   [Звіти про помилки](#bug-reports)
--   [Питання підтримки](#support-questions)
--   [Основна дискусія щодо розвитку](#core-development-discussion)
--   [Яке відділення?](#which-branch)
--   [Складені активи](#compiled-assets)
--   [Уразливості безпеки](#security-vulnerabilities)
--   [Стиль кодування](#coding-style)
-    -   [PHPDoc](#phpdoc)
-    -   [StyleCI](#styleci)
--   [Норми поведінки](#code-of-conduct)
+[comment]: <> (# Керівництво по Contribution)
+
+[comment]: <> (-   [Звіти про помилки]&#40;#bug-reports&#41;)
+
+[comment]: <> (-   [Питання для підтримки]&#40;#support-questions&#41;)
+
+[comment]: <> (-   [Основна дискусія щодо розвитку]&#40;#core-development-discussion&#41;)
+
+[comment]: <> (-   [Яка гілка?]&#40;#which-branch&#41;)
+
+[comment]: <> (-   [Compiled Assets]&#40;#compiled-assets&#41;)
+
+[comment]: <> (-   [Уразливості безпеки]&#40;#security-vulnerabilities&#41;)
+
+[comment]: <> (-   [Стиль кодування]&#40;#coding-style&#41;)
+
+[comment]: <> (    -   [PHPDoc]&#40;#phpdoc&#41;)
+
+[comment]: <> (    -   [StyleCI]&#40;#styleci&#41;)
+
+[comment]: <> (-   [Норми поведінки]&#40;#code-of-conduct&#41;)
 
 <a name="bug-reports"></a>
 
@@ -74,7 +84,7 @@ git 11a0798a095fefdd3c1e9627c4a209ab069285c5
 
 <a name="which-branch"></a>
 
-## Яке відділення?
+## Яка гілка?
 
 **Всі**виправлення помилок слід надсилати до останньої стабільної гілки або до[поточна філія LTS](/docs/{{version}}/releases#support-policy). Виправлення помилок повинно відбуватися**ніколи**відправити до`master`, якщо вони не виправлять функції, які існують лише у майбутньому випуску
 
@@ -86,7 +96,7 @@ git 11a0798a095fefdd3c1e9627c4a209ab069285c5
 
 <a name="compiled-assets"></a>
 
-## Складені активи
+## Compiled Assets
 
 Якщо ви подаєте зміну, яка вплине на скомпільований файл, такий як більшість файлів у`resources/css`або`resources/js`з`laravel/laravel`сховище, не фіксуйте компільовані файли. Через їх великі розміри, вони не можуть бути реально перевірені супроводжуючим. Це можна використати як спосіб ін’єкції шкідливого коду в Laravel. Для того, щоб оборонно запобігти цьому, всі скомпільовані файли будуть генеруватися та фіксуватися супровідниками Laravel.
 
@@ -100,7 +110,7 @@ git 11a0798a095fefdd3c1e9627c4a209ab069285c5
 
 ## Стиль кодування
 
-Ларавел слідує за[PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)стандарт кодування та[PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md)стандарт автоматичного завантаження.
+Laravel слідує за[PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)стандарт кодування та[PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md)стандарт автоматичного завантаження.
 
 <a name="phpdoc"></a>
 

@@ -1,14 +1,22 @@
 # Розгортання
 
--   [Вступ](#introduction)
--   [Конфігурація сервера](#server-configuration)
-    -   [Nginx](#nginx)
--   [Оптимізація](#optimization)
-    -   [Оптимізація автозавантажувача](#autoloader-optimization)
-    -   [Оптимізація завантаження конфігурації](#optimizing-configuration-loading)
-    -   [Оптимізація завантаження маршруту](#optimizing-route-loading)
-    -   [Оптимізація завантаження подання](#optimizing-view-loading)
--   [Розгортання з куванням / парою](#deploying-with-forge-or-vapor)
+[comment]: <> (-   [Вступ]&#40;#introduction&#41;)
+
+[comment]: <> (-   [Конфігурація сервера]&#40;#server-configuration&#41;)
+
+[comment]: <> (    -   [Nginx]&#40;#nginx&#41;)
+
+[comment]: <> (-   [Оптимізація]&#40;#optimization&#41;)
+
+[comment]: <> (    -   [Оптимізація автозавантажувача]&#40;#autoloader-optimization&#41;)
+
+[comment]: <> (    -   [Оптимізація завантаження конфігурації]&#40;#optimizing-configuration-loading&#41;)
+
+[comment]: <> (    -   [Оптимізація завантаження маршруту]&#40;#optimizing-route-loading&#41;)
+
+[comment]: <> (    -   [Оптимізація завантаження View]&#40;#optimizing-view-loading&#41;)
+
+[comment]: <> (-   [Розгортання з Forge / Vapor]&#40;#deploying-with-forge-or-vapor&#41;)
 
 <a name="introduction"></a>
 
@@ -97,17 +105,17 @@
 
 <a name="optimizing-view-loading"></a>
 
-### Оптимізація завантаження подання
+### Оптимізація завантаження View
 
 Розгортаючи вашу програму до робочої версії, ви повинні переконатися, що ви запустили`view:cache`Команда ремісників під час процесу розгортання:
 
     php artisan view:cache
 
-Ця команда попередньо компілює всі ваші подання Blade, щоб вони не компілювалися на вимогу, покращуючи продуктивність кожного запиту, який повертає подання.
+Ця команда попередньо компілює всі ваші View Blade, щоб вони не компілювалися на вимогу, покращуючи продуктивність кожного запиту, який повертає View.
 
 <a name="deploying-with-forge-or-vapor"></a>
 
-## Розгортання з куванням / парою
+## Розгортання з Forge / Vapor
 
 Якщо ви ще не зовсім готові керувати власною конфігурацією сервера або вам не зручно налаштовувати всі різні сервіси, необхідні для запуску надійної програми Laravel,[Кузня Laravel](https://forge.laravel.com)є чудовою альтернативою.
 
