@@ -1,6 +1,6 @@
 <!-- docs/_sidebar.md -->
 * ###### [`Laravel Ukrainian 8`](/)
-* [artisan](/laravelUkr/8/artisan.md)
+* [artisan](/8/artisan.md)
 * [authentication](/8/authentication.md)
 * [authorization](/8/authorization.md)
 * [billing](/8/billing.md)
