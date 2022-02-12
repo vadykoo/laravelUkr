@@ -12,13 +12,31 @@
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: '',
+      name: 'LaravelUrk документація',
       repo: '',
       loadSidebar: true,
-      subMaxLevel: 3
+      subMaxLevel: 3,
+      search: {
+        maxAge: 86400000, // Expiration time, the default one day
+        paths: [], // or 'auto'
+        placeholder: 'Друкуйте для пошуку!',
+
+        noData: 'Немає результатів!',
+
+        // Headline depth, 1 - 6
+        depth: 6,
+
+        hideOtherSidebarContent: false, // whether or not to hide other sidebar content
+
+        // To avoid search index collision
+        // between multiple websites under the same domain
+        // namespace: 'website-1',
+      }
     }
   </script>
   <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+<!--  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>-->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 </body>
 </html>
