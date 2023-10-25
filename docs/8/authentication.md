@@ -176,7 +176,7 @@ use Illuminate\Support\Facades\Auth;
 
 Як варіант, як тільки аутентифікація користувача відбувається, ви можете отримати доступ до автентифікованого користувача через екземпляр `Illuminate\Http\Request`. Пам’ятайте, класи с заданим типом автоматично вводитимуться у ваші методи контролера. За допомогою об'єкта `Illuminate\Http\Request` ви можете отримати зручний доступ до аутентифікованого користувача з будь-якого методу контролера у вашій програмі за допомогою методу запиту `user`:
 
-  <?php
+`  <?php
 
     namespace App\Http\Controllers;
 
@@ -194,7 +194,7 @@ use Illuminate\Support\Facades\Auth;
         {
             // $request->user()
         }
-    }
+    }`
 
 <a name="determining-if-the-current-user-is-authenticated"></a>
 
